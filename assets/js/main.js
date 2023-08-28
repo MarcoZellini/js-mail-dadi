@@ -63,17 +63,33 @@ formElement.addEventListener('submit', function (e) {
     const emailInputElement = document.querySelector("input[type='email']");
     const emailInputValue = emailInputElement.value;
     let emailCheckMessage;
+    let isIncluded = false; 
 
     console.log("emailInputElement, emailInputValue -->", emailInputElement, emailInputValue);
 
     //controllo se la mail inserita si trova all'interno nella lista
-    if (emailList.includes(emailInputValue)) {
+    for (let i = 0; i < emailList.length; i++) {
+        if (emailInputValue === emailList[i]) {
+            isIncluded = true;
+        }
+    }
+
+    if (isIncluded) {
         emailCheckMessage = `Benvenuto ${emailInputValue}! Puoi accedere a questo sito!`;
         console.log(`Benvenuto ${emailInputValue}! Puoi accedere a questo sito!`);
     } else {
         emailCheckMessage = `Attenzione! L'indirizzo mail ${emailInputValue} non esiste!`;
         console.log(`Attenzione! L'indirizzo mail inserito non esiste!`);
     }
+    
+    //controllo se la mail inserita si trova all'interno nella lista
+    /* if (emailList.includes(emailInputValue)) {
+        emailCheckMessage = `Benvenuto ${emailInputValue}! Puoi accedere a questo sito!`;
+        console.log(`Benvenuto ${emailInputValue}! Puoi accedere a questo sito!`);
+    } else {
+        emailCheckMessage = `Attenzione! L'indirizzo mail ${emailInputValue} non esiste!`;
+        console.log(`Attenzione! L'indirizzo mail inserito non esiste!`);
+    } */
 
     //scrivo in pagina il risultato della ricerca
     const emailCheckResultElement = document.getElementById('email_check_result');
