@@ -52,8 +52,10 @@ emailList.push('hello@gmail.com');
 const buttonElement = document.querySelector("button[type='submit']");
 console.log(buttonElement);
 
-//al click del bottone scatenerò un evento
-buttonElement.addEventListener('click', function (e) {
+const formElement = document.querySelector('form');
+
+//allo scatenarsi dell'evento submit esegui del codice...
+formElement.addEventListener('submit', function (e) {
     //prevengo il comportamento di default del buttone submit, perciò prevengo il refresh della pagina
     e.preventDefault();
 
